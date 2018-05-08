@@ -1,0 +1,22 @@
+{
+  "name": "m165437/igc2kmz-installer",
+  "description": "Install igc2kmz in your php project with ease",
+  "type": "custom-installer",
+  "require-dev": {
+    "composer/composer": "^1.2"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michael Schmidt-Voigt",
+      "email": "michael@schmidt-voigt.de"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "M165437\\Igc2Kmz\\": "src"
+    }
+  }
+}
