@@ -22,8 +22,8 @@ class Installer
 
         $binDir = $config->get('bin-dir');
         $targetDir = $config->get('vendor-dir') . '/twpayne/igc2kmz';
-        $binSource = $binDir . '/igc2kmz';
-        $binTarget = $targetDir . '/bin/igc2kmz';
+        $binSource = $binDir . '/igc2kmz.py';
+        $binTarget = $targetDir . '/bin/igc2kmz.py';
 
         $fs = new Filesystem();
         if ($fs->exists($binTarget) && $fs->exists($binSource)) {
@@ -38,6 +38,8 @@ class Installer
         try {
             $package = self::createComposerInMemoryPackage($targetDir);
             $downloadManager->download($package, $targetDir);
+
+            $fs->symlink($binTarget, $binSource);
 
             $process = new Process('chmod +x igc2kmz.py');
             $process->setWorkingDirectory($binDir);
