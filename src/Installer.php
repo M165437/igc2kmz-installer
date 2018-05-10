@@ -20,10 +20,13 @@ class Installer
         $composer = $event->getComposer();
         $config = $composer->getConfig();
 
-        $binDir = $config->get('bin-dir');
-        $targetDir = $config->get('vendor-dir') . '/twpayne/igc2kmz';
-        $binSource = $binDir . '/igc2kmz.py';
+        $vendorDir = $config->get('vendor-dir');
+        $binDir    = $config->get('bin-dir');
+        $targetDir = $vendorDir . '/twpayne/igc2kmz';
+        $binSource = $binDir . '/igc2kmz';
         $binTarget = $targetDir . '/bin/igc2kmz.py';
+
+        require_once $config->get('vendor-dir') . '/autoload.php';
 
         $fs = new Filesystem();
         if ($fs->exists($binTarget) && $fs->exists($binSource)) {
@@ -39,9 +42,12 @@ class Installer
             $package = self::createComposerInMemoryPackage($targetDir);
             $downloadManager->download($package, $targetDir);
 
-            $fs->symlink($binTarget, $binSource);
+            $fs->appendToFile(
+                $binSource,
+                "#!/bin/bash\n$(dirname \"\${BASH_SOURCE[0]}\")/../twpayne/igc2kmz/bin/igc2kmz.py \"$@\""
+            );
 
-            $process = new Process('chmod +x igc2kmz.py');
+            $process = new Process('chmod +x igc2kmz');
             $process->setWorkingDirectory($binDir);
             $process->run(function ($type, $buffer) use ($io) {
                 if (!$io->isVerbose()) {
