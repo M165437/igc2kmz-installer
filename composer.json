@@ -1,6 +1,14 @@
 {
   "name": "m165437/igc2kmz-installer",
-  "description": "Install igc2kmz in your php project with ease",
+  "description": "Install igc2kmz in your PHP project with ease",
+  "keywords": [
+    "paragliding",
+    "Google Earth",
+    "igc",
+    "kmz",
+    "kml",
+    "python"
+  ],
   "type": "custom-installer",
   "license": "MIT",
   "authors": [
