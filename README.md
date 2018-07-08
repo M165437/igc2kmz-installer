@@ -31,13 +31,13 @@ You may consider adding a reference to your update and install hooks:
 }
 ```
 
-Upon installation, this package adds a binary `igc2kmz` to `vendor/bin` that can be passed to the constructor of [igc2kmz-php](https:\\github.com\m165437\igc2kmz-php) during instantiation.
+Upon installation, this package adds a binary `igc2kmz` to `vendor/bin` that can be passed to the constructor of [igc2kmz-php](https://github.com/m165437/igc2kmz-php) during instantiation.
 
 ```php
 $igc2kmz = new \Igc2KmzPhp\Igc2Kmz('vendor/bin/igc2kmz');
 ```
 
-See [igc2kmz-php](https:\\github.com\m165437\igc2kmz-php) for actual usage of igc2kmz in your PHP application.
+See [igc2kmz-php](https://github.com/m165437/igc2kmz-php) for actual usage of igc2kmz in your PHP application.
 
 ## Contributing
 
